@@ -1,0 +1,10 @@
+body {
+	display:flex;
+	justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    color: blue
+}
+a {
+    margin: 75px;
+}
