@@ -10,13 +10,7 @@
 	<script type="text/javascript" src="/js/app.js"></script>
 </head>
 <body>
-<p> you have visited localhost8080  <c:out value="${count}"/> times.</p>
-
-
-<p><a href="/">Test another visit???</a></p>
-<p><a href="/two">Add "2" to your counter???</a></p>
-
-<a href="/reset"><button>reset</button></a>
+<h1>oops 2 has benn added to your counter</h1>
 
 </body>
 </html>
