@@ -1,17 +1,18 @@
 // ..
 package com.mvc.demo.controllerss;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mvc.demo.models.Book;
 import com.mvc.demo.services.BookService;
 
-@RestController
+@Controller
 public class BooksApi {
     private final BookService bookService;
     public BooksApi(BookService bookService){
@@ -42,6 +43,16 @@ public class BooksApi {
     public Book create(@RequestParam(value="title") String title, @RequestParam(value="description") String desc, @RequestParam(value="language") String lang, @RequestParam(value="pages") Integer numOfPages) {
         Book book = new Book(title, desc, lang, numOfPages);
         return bookService.createBook(book);
+    }
+    @GetMapping("book/{id}")
+    public String rend(@PathVariable("id") Long id, Model model) {
+    	Book bk = bookService.findBook(id);
+    	model.addAttribute("title",bk.getTitle());
+    	model.addAttribute("desc",bk.getDescription());
+    	model.addAttribute("lang",bk.getLanguage());
+    	model.addAttribute("pages",bk.getNumberOfPages());
+
+    	return "index.jsp";
     }
     
     
