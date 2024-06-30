@@ -20,12 +20,15 @@
         <td>Burger Name</td>
         <td>Restaurant Name</td>
         <td>Rating (out of 5)</td>
+        <td>Action</td>
+        
     </th>
     <c:forEach var="burger" items="${burgers}">
 	    <tr>
 	        <td><c:out value="${burger.bname}"></c:out></td>
 	        <td><c:out value="${burger.rname}"></c:out></td>
 	        <td><c:out value="${burger.rating}"></c:out></td>
+	        <td><a href="/edit/${burger.id}">Edit</a></td>
 	    </tr>
 	</c:forEach>
 
